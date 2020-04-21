@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Playground
 {
@@ -41,12 +31,11 @@ namespace Playground
             Task templateTask = new Task();
             templateTask.Title = "new task";
             templateTask.Description = "add a description";
-            templateTask.Assigned = false;
             templateTask.Assignee = "assign a user";
             templateTask.Priority = 0;
             templateTask.State = Task.taskState.TODO;
 
-            StackPanel taskControl = TaskControlFactory.CreateTaskControl(templateTask);
+            Control taskControl = TaskControlFactory.CreateTaskControl(templateTask);
             todoPanel.Children.Add(taskControl);
 
             ScrollDown();
@@ -62,7 +51,7 @@ namespace Playground
             }
             foreach (Task t in tasks)
             {
-                StackPanel taskControl = TaskControlFactory.CreateTaskControl(t);
+                Control taskControl = TaskControlFactory.CreateTaskControl(t);
                 todoPanel.Children.Add(taskControl);
             }
 

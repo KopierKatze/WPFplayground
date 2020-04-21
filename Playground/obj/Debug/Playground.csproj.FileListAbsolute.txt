@@ -13,3 +13,5 @@ C:\Users\Alex\projects\WPF\WPFplayground\Playground\obj\Debug\Playground.csproj.
 C:\Users\Alex\projects\WPF\WPFplayground\Playground\obj\Debug\Playground.csproj.CoreCompileInputs.cache
 C:\Users\Alex\projects\WPF\WPFplayground\Playground\obj\Debug\Playground.exe
 C:\Users\Alex\projects\WPF\WPFplayground\Playground\obj\Debug\Playground.pdb
+C:\Users\Alex\projects\WPF\WPFplayground\Playground\obj\Debug\TaskControl.g.cs
+C:\Users\Alex\projects\WPF\WPFplayground\Playground\obj\Debug\TaskControl.baml

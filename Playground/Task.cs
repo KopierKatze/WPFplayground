@@ -7,7 +7,6 @@ namespace Playground
         private string title;
         private string description;
         private string assignee;
-        private bool assigned = false;
         private int priority;
 
         public enum taskState
@@ -39,19 +38,6 @@ namespace Playground
             {
                 description = value;
                 OnPropertyChanged("description");
-            }
-        }
-
-        public bool Assigned
-        {
-            get
-            {
-                return assigned;
-            }
-            set
-            {
-                assigned = value;
-                OnPropertyChanged("assigned");
             }
         }
 
