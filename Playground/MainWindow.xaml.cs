@@ -33,11 +33,9 @@ namespace Playground
 
         private void OnAddNewTODO(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("ADD");
             StackPanel todoPanel = (StackPanel)FindName("TODO");
             if (todoPanel == null)
             {
-                Console.WriteLine("Could not find todo panel");
                 return;
             }
             Task templateTask = new Task();
@@ -50,6 +48,8 @@ namespace Playground
 
             StackPanel taskControl = TaskControlFactory.CreateTaskControl(templateTask);
             todoPanel.Children.Add(taskControl);
+
+            ScrollDown();
         }
 
 
@@ -58,7 +58,6 @@ namespace Playground
             StackPanel todoPanel = (StackPanel) FindName("TODO");
             if (todoPanel == null)
             {
-                Console.WriteLine("Could not find todo panel");
                 return;
             }
             foreach (Task t in tasks)
@@ -66,6 +65,19 @@ namespace Playground
                 StackPanel taskControl = TaskControlFactory.CreateTaskControl(t);
                 todoPanel.Children.Add(taskControl);
             }
+
+            ScrollDown();
+        }
+
+        private void ScrollDown()
+        {
+            ScrollViewer scrollView = (ScrollViewer)FindName("ScrollView");
+            if (scrollView == null)
+            {
+                return;
+            }
+
+            scrollView.ScrollToBottom();
         }
     }
 }
