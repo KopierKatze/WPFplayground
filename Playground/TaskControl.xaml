@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:Playground"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="70">
-    <Border Margin="3">
+    <Border Margin="3" MouseLeftButtonDown="TaskPreviewMouseLeftButtonDown" MouseMove="TaskMouseMove">
         <StackPanel Background="LightGray" VerticalAlignment="Center">
-            <RichTextBox Name ="Title" Grid.Column="0" Grid.Row="0" MinHeight="30" TextBlock.FontWeight="Bold" TextBlock.FontSize="15" TextBlock.TextAlignment="Center"/>
-            <RichTextBox Name="Description" Grid.Column="0" Grid.Row="1" MinHeight="30" TextBlock.FontWeight="Medium" TextBlock.FontSize="12" TextBlock.TextAlignment="Justify"/>
-            <RichTextBox Name="Assignee" Grid.Column="0" Grid.Row="2" MinHeight="30" TextBlock.FontWeight="Light" TextBlock.FontSize="10" TextBlock.TextAlignment="Right"/>
+            <RichTextBox Name ="Title" MinHeight="30" TextBlock.FontWeight="Bold" TextBlock.FontSize="15" TextBlock.TextAlignment="Center" IsEnabled="False" IsReadOnly="True" MouseDoubleClick="OnTaskControlClicked"/>
+            <RichTextBox Name="Description" MinHeight="30" MaxHeight="60" TextBlock.FontWeight="Medium" TextBlock.FontSize="12" TextBlock.TextAlignment="Justify" IsReadOnly="True" MouseDoubleClick="OnTaskControlClicked"/>
+            <RichTextBox Name="Assignee" MinHeight="30" TextBlock.FontWeight="Light" TextBlock.FontSize="10" TextBlock.TextAlignment="Right" IsReadOnly="True" MouseDoubleClick="OnTaskControlClicked"/>
         </StackPanel>
     </Border>
 </UserControl>

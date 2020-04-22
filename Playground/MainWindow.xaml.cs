@@ -68,5 +68,45 @@ namespace Playground
 
             scrollView.ScrollToBottom();
         }
+
+        private void TODO_Drop(object sender, DragEventArgs e)
+        {
+            StackPanel todoPanel = sender as StackPanel;
+
+            TaskControl draggedTask = e.Data.GetData("DraggedTask") as TaskControl;
+            if (draggedTask != null)
+            {
+                draggedTask.RemoveFromOtherPanel();
+                todoPanel.Children.Add(draggedTask);
+            }
+        }
+
+        private void InProgress_Drop(object sender, DragEventArgs e)
+        {
+            StackPanel progressPanel = sender as StackPanel;
+
+            TaskControl draggedTask = e.Data.GetData("DraggedTask") as TaskControl;
+            if (draggedTask != null)
+            {
+                draggedTask.RemoveFromOtherPanel();
+                progressPanel.Children.Add(draggedTask);
+            }
+        }
+
+        private void TODO_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("DraggedTask") || sender == e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        private void InProgress_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("DraggedTask") || sender == e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Playground
     {
         public static Control CreateTaskControl(Task task)
         {
-            Control taskControl = new TaskControl();
+            Control taskControl = new TaskControl(task);
 
             RichTextBox titleBox = (RichTextBox)taskControl.FindName("Title");
             RichTextBox descriptionBox = (RichTextBox)taskControl.FindName("Description");
@@ -26,7 +26,7 @@ namespace Playground
             }
             if (assigneeBox != null)
             {
-                assigneeBox.Document.Blocks.Clear();
+                assigneeBox.Document.Blocks.Clear(); 
                 assigneeBox.Document.Blocks.Add(new Paragraph(new Run(task.Assignee)));
             }
 

@@ -2,12 +2,15 @@
 
 namespace Playground
 {
-    class Task : INotifyPropertyChanged
+    public class Task : INotifyPropertyChanged
     {
         private string title;
         private string description;
         private string assignee;
         private int priority;
+
+        // Enabled by default until user permissions can be checked.
+        private bool editEnabled = true;
 
         public enum taskState
         {
@@ -78,6 +81,24 @@ namespace Playground
                 state = value;
                 OnPropertyChanged("state");
             }
+        }
+
+        public bool EditEnabled
+        {
+            get
+            {
+                return editEnabled;
+            }
+            private set
+            {
+                editEnabled = value;
+            }
+        }
+
+        public void SetEditEnabledFlag(bool newValue)
+        {
+            // TODO check permissions (assignee)
+            EditEnabled = newValue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
