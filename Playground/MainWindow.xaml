@@ -6,31 +6,33 @@
         xmlns:local="clr-namespace:Playground"
         mc:Ignorable="d"
         Title="playground board" Height="600" Width="800">
-    <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Top" Background="LightGray" VerticalScrollBarVisibility="Auto" Width="790" Height="Auto" Name="ScrollView">
-        <Grid AllowDrop="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="50"/>
-                <ColumnDefinition MinWidth="50"/>
-                <ColumnDefinition MinWidth="50"/>
-                <ColumnDefinition MinWidth="50"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="35" />
-            </Grid.RowDefinitions>
+    <Canvas Name="Canvas" AllowDrop="False" Background="Gray" DragEnter="DockPanel_DragEnter" MouseMove="Dock_MouseMove">
+        <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="LightGray" VerticalScrollBarVisibility="Auto" Height="569" Width="777" Name="ScrollView" >
+            <Grid AllowDrop="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="190"/>
+                    <ColumnDefinition MinWidth="190"/>
+                    <ColumnDefinition MinWidth="190"/>
+                    <ColumnDefinition MinWidth="190"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
 
-            <Label Content="TODO" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <Label Content="in progress" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <Label Content="in review" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <Label Content="done" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="TODO" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="in progress" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="in review" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="done" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Name="TODO" VerticalAlignment="Top"  AllowDrop="True" DragEnter="TODO_DragEnter" Drop="TODO_Drop"/>
-            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Height="600" Background="Aqua" Name="InProgress" VerticalAlignment="Top" AllowDrop="True" DragEnter="InProgress_DragEnter" Drop="InProgress_Drop" />
-            <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="1" Height="600" Name="InReview" VerticalAlignment="Top"  AllowDrop="True" />
-            <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="1" Height="600" Name="Done" VerticalAlignment="Top"  AllowDrop="True" />
+                <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Name="TODO" VerticalAlignment="Stretch" Background="LightGray"  AllowDrop="True"  Drop="TODO_Drop" DragEnter="TODO_DragEnter" MouseMove="TODO_MouseMove"/>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Name="InProgress" VerticalAlignment="Stretch" Background="LightGray"  AllowDrop="True" Drop="InProgress_Drop" />
+                <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="1" Name="InReview" VerticalAlignment="Stretch" Background="LightGray"  AllowDrop="True" />
+                <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="1" Name="Done" VerticalAlignment="Stretch" Background="LightGray"  AllowDrop="True" />
 
-                <Button Click="OnAddNewTODO" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Height="30" Width="30"> + </Button>
-        </Grid>
-    </ScrollViewer>
+                <Button Click="OnAddNewTODO" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Height="30" Width="30">+</Button>
+            </Grid>
+        </ScrollViewer>
+    </Canvas>
 </Window>

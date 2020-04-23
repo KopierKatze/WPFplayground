@@ -95,8 +95,6 @@ namespace Playground
                         parentPanel = this.Parent as StackPanel;
                     }
 
-                    //taskPanel.RenderTransform. = e.GetPosition(parentPanel);
-
                     DataObject dataObject = new DataObject();
                     dataObject.SetData("DraggedTask", this);
                     DragDrop.DoDragDrop(sender as Border, dataObject, DragDropEffects.Move);
@@ -119,14 +117,16 @@ namespace Playground
         }
 
 
-        public void RemoveFromOtherPanel()
+        public void DetachFromParent()
         {
-            if (parentPanel == null)
+            if (Parent.GetType().Equals(typeof(StackPanel)))
             {
-                parentPanel = Parent as StackPanel;
+                parentPanel.Children.Remove(this);
             }
-
-            parentPanel.Children.Remove(this);
+            else if (Parent.GetType().Equals(typeof(Canvas)))
+            {
+                (Parent as Canvas).Children.Remove(this);
+            }
         }
     }
 }

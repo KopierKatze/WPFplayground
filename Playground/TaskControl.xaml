@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Playground"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="70">
-    <Border Margin="3" MouseLeftButtonDown="TaskPreviewMouseLeftButtonDown" MouseMove="TaskMouseMove">
-        <StackPanel Background="LightGray" VerticalAlignment="Center">
+             d:DesignHeight="100" d:DesignWidth="190">
+    <Border Margin="3" MouseLeftButtonDown="TaskPreviewMouseLeftButtonDown" MouseMove="TaskMouseMove" Width="190">
+        <StackPanel Background="LightGray" VerticalAlignment="Center" Width="190">
             <RichTextBox Name ="Title" MinHeight="30" TextBlock.FontWeight="Bold" TextBlock.FontSize="15" TextBlock.TextAlignment="Center" IsEnabled="False" IsReadOnly="True" MouseDoubleClick="OnTaskControlClicked"/>
             <RichTextBox Name="Description" MinHeight="30" MaxHeight="60" TextBlock.FontWeight="Medium" TextBlock.FontSize="12" TextBlock.TextAlignment="Justify" IsReadOnly="True" MouseDoubleClick="OnTaskControlClicked"/>
             <RichTextBox Name="Assignee" MinHeight="30" TextBlock.FontWeight="Light" TextBlock.FontSize="10" TextBlock.TextAlignment="Right" IsReadOnly="True" MouseDoubleClick="OnTaskControlClicked"/>
