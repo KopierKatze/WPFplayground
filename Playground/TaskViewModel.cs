@@ -1,38 +1,102 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Playground
 {
-    class TaskViewModel
+    public class TaskViewModel : INotifyPropertyChanged
     {
-        private List<Task> tasks;
         private ICommand updateCommand;
 
-        public TaskViewModel()
-        {
-            tasks = new List<Task>()
-            {
-                new Task{Title = "awesome task", Description = "very first task in list", Assignee = "me", Priority = 0, State = Task.taskState.TODO},
-                new Task{Title = "next in line", Description = "is this", Assignee = "sloth", Priority = 0, State = Task.taskState.TODO},
-                new Task{Title = "yaat", Description = "yet another awesome task", Assignee = "panda", Priority = 3, State = Task.taskState.TODO},
-                new Task{Title = "whopeee", Description = "going fast", Assignee = "turtle", Priority = 5, State = Task.taskState.TODO},
-                new Task{Title = "bogus task", Description = "getting hungry", Assignee = "rabbit", Priority = 1, State = Task.taskState.TODO},
-                new Task{Title = "one more", Description = "penultimate task", Assignee = "lama", Priority = -1, State = Task.taskState.TODO},
-                new Task{Title = "last task", Description = "to be done at the very end", Assignee = "alpaka", Priority = 10, State = Task.taskState.TODO}
-            };
-        }
+        public Task Task { get; set; }
 
-        public List<Task> Tasks
+        public string Title
         {
             get
             {
-                return tasks;
+                return Task.Title;
             }
             set
             {
-                tasks = value;
+                Task.Title = value;
+                OnPropertyChanged("title");
             }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return Task.Description;
+            }
+            set
+            {
+                Task.Description = value;
+                OnPropertyChanged("description");
+            }
+        }
+
+        public string Assignee
+        {
+            get
+            {
+                return Task.Assignee;
+            }
+            set
+            {
+                Task.Assignee = value;
+                OnPropertyChanged("assignee");
+            }
+        }
+
+        public int Priority
+        {
+            get
+            {
+                return Task.Priority;
+            }
+            set
+            {
+                Task.Priority = value;
+                OnPropertyChanged("priority");
+            }
+        }
+
+        public Task.taskState State
+        {
+            get
+            {
+                return Task.State;
+            }
+            set
+            {
+                Task.State = value;
+                OnPropertyChanged("state");
+            }
+        }
+
+        public bool EditEnabled
+        {
+            get
+            {
+                return Task.EditEnabled;
+            }
+            private set
+            {
+                Task.SetEditEnabledFlag(value);
+            }
+        }
+
+        public void SetEditEnabledFlag(bool newValue)
+        {
+            // TODO check permissions (assignee)
+            EditEnabled = newValue;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public ICommand UpdateCommand
@@ -60,7 +124,7 @@ namespace Playground
 
             public void Execute(object parameter)
             {
-                
+
             }
         }
     }

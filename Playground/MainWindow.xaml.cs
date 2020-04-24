@@ -13,16 +13,19 @@ namespace Playground
     public partial class MainWindow : Window
     {
         private TaskViewModel taskViewModel;
-        private Point dragStartMousePosition;
         private TaskControl draggedTask;
         private bool dragStarted = false;
+        private bool dragEnteredCanvas = false;
+        private Point touchPointInTask;
 
         public MainWindow()
         {
             InitializeComponent();
 
             taskViewModel = new TaskViewModel();
-            SpawnExampleTasks(taskViewModel.Tasks);
+            base.DataContext = taskViewModel;
+
+            SpawnExampleTasks(Task.ReturnExampleTasks());
         }
 
 
@@ -76,12 +79,13 @@ namespace Playground
 
         private void TODO_DragEnter(object sender, DragEventArgs e)
         {
+            /*
             draggedTask = e.Data.GetData("DraggedTask") as TaskControl;
 
             Canvas canvas = FindName("Canvas") as Canvas;
             if (canvas != null && draggedTask != null)
             {
-                dragStartMousePosition = e.GetPosition(canvas);
+                Point mousePos = e.GetPosition(canvas);
                 e.Effects = DragDropEffects.Move;
                 dragStarted = true;
 
@@ -91,22 +95,24 @@ namespace Playground
 
                     canvas.Children.Add(draggedTask);
 
-                    Canvas.SetLeft(draggedTask, dragStartMousePosition.X);
-                    Canvas.SetTop(draggedTask, dragStartMousePosition.Y);
+                    Canvas.SetLeft(draggedTask, mousePos.X);
+                    Canvas.SetTop(draggedTask, mousePos.Y);
                     Console.WriteLine("TODO ENTER");
                 }
 
             }
+            */
         }
 
         private void TODO_MouseMove(object sender, MouseEventArgs e)
         {
+            /*
             if (e.LeftButton == MouseButtonState.Pressed && dragStarted)
             {
                 if (draggedTask != null)
                 {
                     Point mousePos = e.GetPosition(null);
-                    Vector diff = dragStartMousePosition - mousePos;
+                    Vector diff = mousePos - mousePos;
 
                     if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
                         Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
@@ -125,7 +131,7 @@ namespace Playground
                     Console.WriteLine(e.OriginalSource.GetType());
                 }
             }
-
+            */
         }
 
         private void TODO_Drop(object sender, DragEventArgs e)
@@ -138,9 +144,10 @@ namespace Playground
                 draggedTask.DetachFromParent();
                 todoPanel.Children.Add(draggedTask);
                 draggedTask = null;
+                dragEnteredCanvas = false;
+                dragStarted = false;
             }
         }
-
 
 
         private void InProgress_Drop(object sender, DragEventArgs e)
@@ -153,28 +160,40 @@ namespace Playground
                 draggedTask.DetachFromParent();
                 progressPanel.Children.Add(draggedTask);
                 draggedTask = null;
+                dragEnteredCanvas = false;
+                dragStarted = false;
             }
         }
 
 
         private void DockPanel_DragEnter(object sender, DragEventArgs e)
         {
-            Canvas canvas = sender as Canvas;
+            //draggedTask = e.Data.GetData("DraggedTask") as TaskControl;
+            //touchPointInTask = (Point) e.Data.GetData("TouchPos");
+            //Canvas canvas = sender as Canvas;
 
-            if (draggedTask != null)
-            {
-                Console.WriteLine("CANVAS ENTER");
-                //draggedTask.DetachFromParent();
-                //canvas.Children.Add(draggedTask);
-                Canvas.SetLeft(draggedTask, e.GetPosition(canvas).X);
-                Canvas.SetTop(draggedTask, e.GetPosition(canvas).Y);
-                e.Effects = DragDropEffects.Move;
-            }
-            
+            //if (draggedTask != null && canvas != null 
+            //    && !dragEnteredCanvas && !dragStarted)
+            //{
+            //    dragStarted = true;
+            //    Point mousePos = e.GetPosition(Application.Current.Windows[0]/*canvas*/);
+            //    draggedTask.DetachFromParent();
+            //    canvas.Children.Add(draggedTask);
+
+            //    Point diff = new Point(mousePos.X - touchPointInTask.X,
+            //        mousePos.Y - touchPointInTask.Y);
+
+            //    Console.WriteLine("CANVAS ENTER " + diff.ToString() + " " + mousePos.ToString());
+            //    Canvas.SetLeft(draggedTask, diff.X);
+            //    Canvas.SetTop(draggedTask, diff.Y);
+            //    e.Effects = DragDropEffects.Move;
+            //    dragEnteredCanvas = true;
+            //}
         }
 
         private void Dock_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (e.LeftButton == MouseButtonState.Pressed && dragStarted)
             {
                 Canvas canvas = sender as Canvas;
@@ -182,19 +201,20 @@ namespace Playground
                 {
                     if (draggedTask != null)
                     {
-                        Point mousePos = e.GetPosition(canvas);
-                        Vector diff = dragStartMousePosition - mousePos;
+                        Point mousePos = e.GetPosition(Application.Current.Windows[0]);
+                        mousePos = new Point(mousePos.X - touchPointInTask.X, mousePos.Y - touchPointInTask.Y);
+                        Console.WriteLine("Move " + mousePos.ToString());
+                        //Vector diff = dragStartMousePosition - mousePos;
 
-                        if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
-                            Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
-                        {
-                            Console.WriteLine("MOOOOOVE");
-                            //DataObject dataObject = new DataObject();
-                            //dataObject.SetData("DraggedTask", draggedTask);
-                            //DragDrop.DoDragDrop(sender as Canvas, dataObject, DragDropEffects.Move);
-                            Canvas.SetLeft(draggedTask, mousePos.X);
-                            Canvas.SetTop(draggedTask, mousePos.Y);
-                        }
+                        //if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                        //    Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
+                        //{
+                        //DataObject dataObject = new DataObject();
+                        //dataObject.SetData("DraggedTask", draggedTask);
+                        //DragDrop.DoDragDrop(sender as Canvas, dataObject, DragDropEffects.Move);
+                        Canvas.SetLeft(draggedTask, mousePos.X);
+                        Canvas.SetTop(draggedTask, mousePos.Y);
+                        //}
                     }
                     else
                     {
@@ -205,9 +225,6 @@ namespace Playground
                 else
                     Console.WriteLine(sender.GetType());
             }
-            
         }
-
-        
     }
 }

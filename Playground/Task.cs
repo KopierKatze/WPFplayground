@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Playground
 {
-    public class Task : INotifyPropertyChanged
+    public class Task
     {
         private string title;
         private string description;
@@ -18,6 +20,26 @@ namespace Playground
         }
         private taskState state;
 
+
+        //public Task()
+        //{
+        //    Task t = new Task { Title = "title", Description = "description", Assignee = "assignee", Priority = 0, State = taskState.TODO };
+        //}
+
+        public static List<Task> ReturnExampleTasks()
+        {
+            return new List<Task>()
+            {
+                new Task{Title = "awesome task", Description = "very first task in list", Assignee = "me", Priority = 0, State = taskState.TODO},
+                new Task{Title = "next in line", Description = "is this", Assignee = "sloth", Priority = 0, State = taskState.TODO},
+                new Task{Title = "yaat", Description = "yet another awesome task", Assignee = "panda", Priority = 3, State = taskState.TODO},
+                new Task{Title = "whopeee", Description = "going fast", Assignee = "turtle", Priority = 5, State = taskState.TODO},
+                new Task{Title = "bogus task", Description = "getting hungry", Assignee = "rabbit", Priority = 1, State = taskState.TODO},
+                new Task{Title = "one more", Description = "penultimate task", Assignee = "lama", Priority = -1, State = taskState.TODO},
+                new Task{Title = "last task", Description = "to be done at the very end", Assignee = "alpaka", Priority = 10, State = taskState.TODO}
+            };
+        }
+
         public string Title
         {
             get
@@ -27,7 +49,6 @@ namespace Playground
             set
             {
                 title = value;
-                OnPropertyChanged("title");
             }
         }
 
@@ -40,7 +61,6 @@ namespace Playground
             set
             {
                 description = value;
-                OnPropertyChanged("description");
             }
         }
 
@@ -53,7 +73,6 @@ namespace Playground
             set
             {
                 assignee = value;
-                OnPropertyChanged("assignee");
             }
         }
 
@@ -66,7 +85,6 @@ namespace Playground
             set
             {
                 priority = value;
-                OnPropertyChanged("priority");
             }
         }
 
@@ -79,7 +97,6 @@ namespace Playground
             set
             {
                 state = value;
-                OnPropertyChanged("state");
             }
         }
 
@@ -100,11 +117,6 @@ namespace Playground
             // TODO check permissions (assignee)
             EditEnabled = newValue;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+              
     }
 }

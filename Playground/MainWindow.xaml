@@ -8,7 +8,7 @@
         Title="playground board" Height="600" Width="800">
     <Canvas Name="Canvas" AllowDrop="False" Background="Gray" DragEnter="DockPanel_DragEnter" MouseMove="Dock_MouseMove">
         <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="LightGray" VerticalScrollBarVisibility="Auto" Height="569" Width="777" Name="ScrollView" >
-            <Grid AllowDrop="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MinWidth="190"/>
                     <ColumnDefinition MinWidth="190"/>
