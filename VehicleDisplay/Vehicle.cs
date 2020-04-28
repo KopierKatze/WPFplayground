@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 
 namespace VehicleDisplay
 {
-    abstract class Vehicle
+    public class Vehicle : INotifyPropertyChanged
     {
         #region Vehicle data
         public string Name { get; private set; }
@@ -29,6 +27,8 @@ namespace VehicleDisplay
 
         #endregion
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Vehicle(string vehicleName, string vehicleModel, VehicleType vehicleType)
         {
             Name = vehicleName;
@@ -39,10 +39,12 @@ namespace VehicleDisplay
             Speed = 0f;
         }
 
+
         public void SetSpeed(float newSpeed)
         {
             Speed = newSpeed;
         }
+
 
         public void SetPosition(Point newPosition)
         {
