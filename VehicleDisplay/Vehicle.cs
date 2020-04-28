@@ -28,5 +28,35 @@ namespace VehicleDisplay
         public float Speed { get; set; }
 
         #endregion
+
+        public Vehicle()
+        {
+            Name = "DefaultCar";
+            Id = Guid.NewGuid();
+            Model = "DefaultModel";
+            Type = VehicleType.CAR;
+            Position = new Point(0, 0);
+            Speed = 0f;
+        }
+
+        public Vehicle(string vehicleName, string vehicleModel, VehicleType vehicleType)
+        {
+            Name = vehicleName;
+            Id = Guid.NewGuid();
+            Model = vehicleModel;
+            Type = vehicleType;
+            Position = new Point(0, 0);
+            Speed = 0f;
+        }
+
+        public void SetSpeed(float newSpeed)
+        {
+            Speed = newSpeed;
+        }
+
+        public void SetPosition(Point newPosition)
+        {
+            Position = newPosition;
+        }
     }
 }
