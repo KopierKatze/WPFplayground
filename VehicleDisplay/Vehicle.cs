@@ -29,16 +29,6 @@ namespace VehicleDisplay
 
         #endregion
 
-        public Vehicle()
-        {
-            Name = "DefaultCar";
-            Id = Guid.NewGuid();
-            Model = "DefaultModel";
-            Type = VehicleType.CAR;
-            Position = new Point(0, 0);
-            Speed = 0f;
-        }
-
         public Vehicle(string vehicleName, string vehicleModel, VehicleType vehicleType)
         {
             Name = vehicleName;
