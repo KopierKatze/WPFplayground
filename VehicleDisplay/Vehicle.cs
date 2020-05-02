@@ -9,6 +9,8 @@ using System.Linq;
 
 namespace VehicleDisplay
 {
+    // Vehicle Model class
+    //Used https://www.codingfreaks.de/wpf-mvvm-01/ as a guide for the implementation. 
     public class Vehicle : INotifyPropertyChanged, IDataErrorInfo
     {
         #region Vehicle data
