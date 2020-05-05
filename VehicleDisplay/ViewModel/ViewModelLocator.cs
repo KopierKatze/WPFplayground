@@ -23,9 +23,12 @@ namespace VehicleDisplay.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<VehicleDetailViewModel>();
         }
 
         public MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public VehicleDetailViewModel VehicleDetailViewModel => ServiceLocator.Current.GetInstance<VehicleDetailViewModel>();
 
         public static void Cleanup()
         {
