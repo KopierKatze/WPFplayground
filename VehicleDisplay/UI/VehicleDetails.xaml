@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="VehicleDisplay.VehicleDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             DataContext="{Binding VehicleDetailViewModel, Source={StaticResource Locator}}"
+             d:DesignHeight="250" d:DesignWidth="250">
+    <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10">
+        <ListViewItem>
+            <TextBlock Text="{Binding Name}" FontSize="22"/>
+        </ListViewItem>
+        <ListViewItem>
+            <TextBlock Text="{Binding Model}" FontSize="16"/>
+        </ListViewItem>
+        <ListViewItem>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/speed_gauge_icon.png" Width="30"/>
+                <Rectangle Width="10" />
+                <TextBlock Text="speed in km/h" FontSize="20" VerticalAlignment="Center"/>
+            </StackPanel>
+        </ListViewItem>
+        <ListViewItem>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/position_icon.png" Width="30"/>
+                <Rectangle Width="10" />
+                <TextBlock Text="position in 3D" FontSize="20" VerticalAlignment="Center"/>
+            </StackPanel>
+        </ListViewItem>
+        <ListViewItem >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="ID" FontSize="22"/>
+                <Rectangle Width="10" />
+                <TextBlock Text="123456" FontSize="20"/>
+            </StackPanel>
+        </ListViewItem>
+        <ListViewItem HorizontalAlignment="Right">
+            <ComboBox Width="60" Height="60" SelectionChanged="ComboBox_SelectionChanged" Background="White">
+                <ComboBoxItem IsSelected="True" Background="White">
+                    <Image Source="/car.png" Stretch="UniformToFill"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="White">
+                    <Image Source="/truck.png" Stretch="UniformToFill"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="White">
+                    <Image Source="/motorcycle.png" Stretch="UniformToFill"/>
+                </ComboBoxItem>
+            </ComboBox>
+        </ListViewItem>
+    </ListView>
+</UserControl>
