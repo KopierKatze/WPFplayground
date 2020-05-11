@@ -8,42 +8,42 @@
              d:DesignHeight="250" d:DesignWidth="250">
     <ListView VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10">
         <ListViewItem>
-            <TextBlock Text="{Binding Name}" FontSize="22"/>
+            <TextBlock Text="{Binding Name, Mode=TwoWay}" FontSize="22"/>
         </ListViewItem>
         <ListViewItem>
-            <TextBlock Text="{Binding Model}" FontSize="16"/>
+            <TextBlock Text="{Binding Model, Mode=TwoWay}" FontSize="16"/>
         </ListViewItem>
         <ListViewItem>
             <StackPanel Orientation="Horizontal">
-                <Image Source="/speed_gauge_icon.png" Width="30"/>
+                <Image Source="/UI/Images/speed_gauge_icon.png" Width="30"/>
                 <Rectangle Width="10" />
-                <TextBlock Text="speed in km/h" FontSize="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Speed}" FontSize="20" VerticalAlignment="Center"/>
             </StackPanel>
         </ListViewItem>
         <ListViewItem>
             <StackPanel Orientation="Horizontal">
-                <Image Source="/position_icon.png" Width="30"/>
+                <Image Source="/UI/Images/position_icon.png" Width="30"/>
                 <Rectangle Width="10" />
-                <TextBlock Text="position in 3D" FontSize="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Position}" FontSize="20" VerticalAlignment="Center"/>
             </StackPanel>
         </ListViewItem>
         <ListViewItem >
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="ID" FontSize="22"/>
                 <Rectangle Width="10" />
-                <TextBlock Text="123456" FontSize="20"/>
+                <TextBlock Text="{Binding Id}" FontSize="20" TextWrapping="Wrap"/>
             </StackPanel>
         </ListViewItem>
         <ListViewItem HorizontalAlignment="Right">
             <ComboBox Width="60" Height="60" SelectionChanged="ComboBox_SelectionChanged" Background="White">
                 <ComboBoxItem IsSelected="True" Background="White">
-                    <Image Source="/car.png" Stretch="UniformToFill"/>
+                    <Image Source="/UI/Images/car.png" Stretch="UniformToFill"/>
                 </ComboBoxItem>
                 <ComboBoxItem Background="White">
-                    <Image Source="/truck.png" Stretch="UniformToFill"/>
+                    <Image Source="/UI/Images/truck.png" Stretch="UniformToFill"/>
                 </ComboBoxItem>
                 <ComboBoxItem Background="White">
-                    <Image Source="/motorcycle.png" Stretch="UniformToFill"/>
+                    <Image Source="/UI/Images/motorcycle.png" Stretch="UniformToFill"/>
                 </ComboBoxItem>
             </ComboBox>
         </ListViewItem>

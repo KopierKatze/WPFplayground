@@ -52,7 +52,7 @@ namespace VehicleDisplay.ViewModel
 
             List<Vehicle> exampleVehicles = new List<Vehicle>();
             
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++)
             {
                 string iStr = i.ToString();
                 string name = string.Format("Vehicle {0}", iStr);
@@ -60,7 +60,6 @@ namespace VehicleDisplay.ViewModel
                 Vehicle.VehicleType type = GetVehicleTypeFromIndex(i);
                 Vehicle exampleVehicle = new Vehicle(name, model, type);
                 exampleVehicles.Add(exampleVehicle);
-                
             }
 
             Vehicles = new ObservableCollection<Vehicle>(exampleVehicles);

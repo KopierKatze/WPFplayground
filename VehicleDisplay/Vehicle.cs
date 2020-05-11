@@ -26,7 +26,7 @@ namespace VehicleDisplay
 
         public enum VehicleType
         {
-            CAR, TRUCK, MOTORCYCLE
+            CAR = 0, TRUCK = 1, MOTORCYCLE = 2
         }
 
         [EnumDataType(typeof(VehicleType), ErrorMessage ="Vehicle type needs to be one of the supported vehicle types.", 
@@ -71,6 +71,16 @@ namespace VehicleDisplay
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Vehicle()
+        {
+            Name = "";
+            Id = Guid.NewGuid();
+            Model = "";
+            Type = VehicleType.CAR;
+            Position = new Point(0, 0);
+            Speed = 0f;
+        }
+
         public Vehicle(string vehicleName, string vehicleModel, VehicleType vehicleType)
         {
             Name = vehicleName;
@@ -80,6 +90,7 @@ namespace VehicleDisplay
             Position = new Point(0, 0);
             Speed = 0f;
         }
+
 
         private void CollectErrorInfo()
         {

@@ -10,6 +10,7 @@
     <None Remove="car.png" />
     <None Remove="position_icon.png" />
     <None Remove="speed_gauge_icon.png" />
+    <None Remove="UI\Images\speed_gauge_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="car.png" />
-    <Resource Include="position_icon.png" />
-    <Resource Include="speed_gauge_icon.png" />
+    <Resource Include="UI\Images\car.png" />
+    <Resource Include="UI\Images\position_icon.png" />
+    <Resource Include="UI\Images\speed_gauge_icon.png" />
   </ItemGroup>
 
 </Project>
