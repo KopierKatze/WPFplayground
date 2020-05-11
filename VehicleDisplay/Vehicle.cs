@@ -108,8 +108,13 @@ namespace VehicleDisplay
                     }
 
                     IsValid = ErrorInfo.Count == 0;
+                    OnPropertyChanged(nameof(IsValid));
                 });
+        }
 
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
