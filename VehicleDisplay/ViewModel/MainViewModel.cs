@@ -1,32 +1,45 @@
-﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using Microsoft.VisualStudio.PlatformUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace VehicleDisplay.ViewModel
 {
+    /// <summary>
+    /// This class contains properties that the main View can data bind to.
+    /// <para>
+    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
+    /// </para>
+    /// <para>
+    /// You can also use Blend to data bind with the tool's support.
+    /// </para>
+    /// <para>
+    /// See http://www.galasoft.ch/mvvm
+    /// </para>
+    /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Initializes a new instance of the MainViewModel class.
+        /// </summary>
         public MainViewModel()
         {
             if (IsInDesignMode)
             {
+                // Code runs in Blend --> create design time data.
                 WindowTitle = "Vehicle Display (Design Mode)";
             }
             else
             {
+                // Code runs "for real"
                 WindowTitle = "VehicleDisplay";
+                FillWithExampleVehicles();
             }
 
-            FillWithExampleVehicles();
+            //FillWithExampleVehicles();
         }
 
         public string WindowTitle { get; private set; }
@@ -35,7 +48,8 @@ namespace VehicleDisplay.ViewModel
         public ListCollectionView VehiclesView { get; private set; }
 
 
-        public Vehicle VehicleModel {
+        public Vehicle VehicleModel
+        {
             get => VehiclesView.CurrentItem as Vehicle;
             set
             {
@@ -51,7 +65,7 @@ namespace VehicleDisplay.ViewModel
         {
 
             List<Vehicle> exampleVehicles = new List<Vehicle>();
-            
+
             for (int i = 0; i < 5; i++)
             {
                 string iStr = i.ToString();
@@ -112,8 +126,5 @@ namespace VehicleDisplay.ViewModel
             else
                 return Vehicle.VehicleType.CAR;
         }
-
-        
     }
 }
-

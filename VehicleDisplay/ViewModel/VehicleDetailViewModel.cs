@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Drawing;
 using System.Text;
+using System.Windows;
 
 namespace VehicleDisplay.ViewModel
 {
