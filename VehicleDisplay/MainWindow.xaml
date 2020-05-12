@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
         Title="{Binding WindowTitle, Mode=OneWay}" Height="900" Width="1600">
+    <Window.Resources>
+        <local:DebugDummyConverter x:Key="DebugDummyConverter" />
+    </Window.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <ListView ItemsSource="{Binding Path=VehiclesView}" SelectedItem="{Binding Path=VehicleModel}" >
+        <ListView ItemsSource="{Binding VehiclesView, Converter={StaticResource DebugDummyConverter}}" SelectedItem="{Binding VehicleModel}" >
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" Width="1550"/>

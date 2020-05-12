@@ -120,7 +120,7 @@ namespace VehicleDisplay.ViewModel
 
         private Vehicle.VehicleType GetVehicleTypeFromIndex(int index)
         {
-            index = index % 3;
+            index %= 3;
             if (Enum.IsDefined(typeof(Vehicle.VehicleType), index))
                 return (Vehicle.VehicleType)index;
             else

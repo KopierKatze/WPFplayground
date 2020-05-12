@@ -55,7 +55,7 @@ namespace VehicleDisplay
             }
         }
 
-        public string Error => throw new NotImplementedException();
+        public string Error => string.Empty;
 
         public string this[string columnName]
         {
